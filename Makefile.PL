@@ -24,15 +24,18 @@ if( !$install_directory ) {
 die "Couldn't determine installation path (looked for site directory), " .
     "please specify a directory to install to" unless $install_directory;
 
-my $smil_install = $install_directory . "/" . $symm_directory . "/" . $smil_directory . "/";
-my $symm_install = $install_directory . "/" . $symm_directory . "/";
+my $smil_install = $install_directory . "/" . 
+    $symm_directory . "/" . $smil_directory . "/";
+my $symm_install = $install_directory . "/" . 
+    $symm_directory . "/";
 
 # Make sure that the directory is there and if not create it
 die "You don't have privileges to install this module into $symm_install,\nPlease view the README for alternatives" 
-unless ( -d $symm_install or mkdir $symm_install, "0755" );
+unless ( -d $symm_install or mkdir $symm_install, 0777 );
 
-die "You don't have privileges to install this module into $smil_install,\nPlease view the README for alternatives" 
-unless ( -d $smil_install or mkdir $smil_install, "0755" );
+die "You don't have privileges to install this module into $smil_install\n" .
+"Please view the README for alternatives" 
+unless ( -d $smil_install or mkdir $smil_install, 0777 );
 
 print "Installation into $symm_install\n";
 
@@ -53,7 +56,8 @@ foreach $file ( @files ) {
 	close FILE;
 
 	# Write it to our new place
-	die "Can't write $install_directory$file" unless( open FILE, ">$smil_install$file" );
+	die "Can't write $install_directory$file" 
+                 unless( open FILE, ">$smil_install$file" );
 	print FILE $contents;
 	close FILE;
 
