@@ -1,6 +1,6 @@
 package SYMM::Smil;
 
-$VERSION = "0.62";
+$VERSION = "0.61";
 
 use Carp;
 use SYMM::SMIL::XMLBase;

@@ -43,3 +43,9 @@ Added new member functions so that users can add arbitrary code to their
 SMIL files.  Call "addCode" to add user-defined code, or "addComment"
 to add a comment.  The user is responsible for formatting.
 
+0.51
+
+Installation information was updated.  Make sure to run make after you
+run the perl Makefile.pl command.
+
+
