@@ -37,3 +37,9 @@ by untarring and running "perl Makefile.PL"
 
 Updated makefile so that it uses the standard ExtUtils::MakeMaker.
 
+0.5
+
+Added new member functions so that users can add arbitrary code to their 
+SMIL files.  Call "addCode" to add user-defined code, or "addComment"
+to add a comment.  The user is responsible for formatting.
+

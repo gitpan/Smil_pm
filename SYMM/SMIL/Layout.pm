@@ -2,7 +2,7 @@ package SYMM::SMIL::Layout;
 
 my $debug = 1;
 
-$VERSION = "0.5";
+$VERSION = "0.6";
 
 use SYMM::SMIL::XMLContainer;
 use SYMM::SMIL::RootLayout;
@@ -111,6 +111,8 @@ sub process_for_size {
 my $regions = "regions";
 my $module_defined_src = "sm-src";
 my $module_defined_align = "sm-align";
+my $left_offset = "sm-left-offset";
+my $top_offset = "sm-top-offset";
 
 sub addRegion {
     my $self = shift;
@@ -199,6 +201,15 @@ sub addRegion {
 	    # Get the total size / 2 minus the item size / 2
 	    $hash{ left } = int( ( $wh / 2 ) - ( $hash{ width } / 2 ) );
 	}
+
+	if( defined( $hash{ left } ) && defined( $hash{ $left_offset } ) ) {
+		$hash{ left } += $hash{ $left_offset };
+	}
+
+	if( defined( $hash{ top } ) && defined( $hash{ $top_offset } ) ) {
+		$hash{ top } += $hash{ $top_offset };
+	}
+
 
     }
 

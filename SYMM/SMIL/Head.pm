@@ -2,7 +2,7 @@ package SYMM::SMIL::Head;
 
 my $debug = 0;
 
-$VERSION = "0.5";
+$VERSION = "0.6";
 
 use SYMM::SMIL::XMLContainer;
 use SYMM::SMIL::XMLTag;
@@ -37,8 +37,6 @@ sub getRootWidth {
     my $ly = $self->getContentObjectByName( $layout );
     return $ly ? $ly->getRootWidth() : 0;    
 }
-
-
 
 sub initLayout {
     my $self = shift;

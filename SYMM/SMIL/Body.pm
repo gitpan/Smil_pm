@@ -1,12 +1,13 @@
 package SYMM::SMIL::Body;
 
-$VERSION = "0.5";
+$VERSION = "0.6";
 
 use SYMM::SMIL::XMLContainer;
 use SYMM::SMIL::Par;
 use SYMM::SMIL::Seq;
 use SYMM::SMIL::MediaFactory;
 use SYMM::SMIL::Switch;
+use SYMM::SMIL::Code;
 
 @ISA = qw( SYMM::SMIL::XMLContainer ); 
 
@@ -115,6 +116,22 @@ sub addMedia {
     my $media = &getMediaObject( @_ );     
     $timeline_head->setTagContents( $self->{$counter}++ => $media );
 }
+
+
+sub addCode {
+    my $self = shift;
+    my $code = shift;
+    
+    if( $self->{$timelineStack} && @{$self->{$timelineStack}} ) {
+	my $timeline_head = ${$self->{$timelineStack}}[ -1 ];
+        my $media = new SYMM::SMIL::Code( $code );     
+        $timeline_head->setTagContents( $self->{$counter}++ => $media );
+    } 
+    else {     
+        $self->initTimeline( new SYMM::SMIL::Code( $code ) );
+    }
+}
+
 
 sub addSwitchedMedia {
     my $self = shift;

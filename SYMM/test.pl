@@ -35,6 +35,8 @@ $obj->addSwitchedMedia( "switch" => 'system-bitrate',
 $obj->addMedia( "region" => $region1, 
 	       'href' => "http://www.real.com",
 	       "src" => "rtsp://moothra.prognet.com/g2video.rm" );
+$obj->addComment( "This is a comment" );
+$obj->addCode( "<RealAdInsert region=\"test\"/>" );
 $obj->addMedia("region" => $region2, 
 	       "anchors" => [ { 'href' => 'http://www.real.com', 
 				'coords' => '0,0,23,0' } ],
@@ -66,6 +68,8 @@ my $expected = <<END;
                 <a href="http://www.real.com">
                     <ref src="rtsp://moothra.prognet.com/g2video.rm" region="region1"/>
                 </a>
+<!--This is a comment-->
+<RealAdInsert region="test"/>
                 <ref src="rtsp://moothra.prognet.com/g2video.rm" region="region2">
                     <anchor coords="0,0,23,0" href="http://www.real.com"/>
                 </ref>
@@ -75,5 +79,10 @@ my $expected = <<END;
 </smil>
 END
     
-print "Installed successfully\n\n" if $expected =~ /$cont/;
+if(  $expected =~ /$cont/ ) {
+	print "Installed successfully\n\n" 
+}
+else {
+	print "Oops, there was a problem installing!";
+}
 

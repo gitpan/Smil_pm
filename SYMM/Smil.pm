@@ -1,6 +1,6 @@
 package SYMM::Smil;
 
-$VERSION = "0.45";
+$VERSION = "0.61";
 
 use Carp;
 use SYMM::SMIL::XMLBase;
@@ -98,6 +98,17 @@ sub endSequence {
 sub addMedia {
     my $self = shift;
     $self->getContentObjectByName( $body )->addMedia( @_ );
+}
+
+sub addCode {
+    my $self = shift;
+    $self->getContentObjectByName( $body )->addCode( @_ );
+}
+
+sub addComment {
+    my $self = shift;
+    my $comment = shift;
+    $self->getContentObjectByName( $body )->addCode( "<!--$comment-->" );
 }
 
 sub addSwitchedMedia {
@@ -306,6 +317,22 @@ Producing this:
 Notice the "begin" parameter, this tells the media its absolute begin time.
 The above code will start the second clip 5 seconds after the first even
 though they are playing in parallel
+
+You can add your own code using the addCode method
+
+    $s->addCode( "<new_tag/>" );
+
+You can add comments by using the addComment method
+
+    $s->addComment( "A comment is here" );
+
+PerlySMIL will add the necessary comment code around the comment, so you 
+get back
+
+<!--A comment is here-->
+
+You as the author are responsible for formatting, so don't expect that
+your arbitrary code will be indented like the rest of the SMIL.
 
 Like HTML, SMIL applications can have hyperlinks.  There are two types in 
 SMIL: normal hrefs, and anchors.  An href covers the entire media item, 

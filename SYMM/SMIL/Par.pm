@@ -1,7 +1,8 @@
 package SYMM::SMIL::Par;
 
-$VERSION = "0.5";
+$VERSION = "0.6";
 
+use Carp;
 use SYMM::SMIL::TimelineBase;
 use SYMM::SMIL::SystemSwitches;
 use SYMM::SMIL::XMLContainer;
@@ -20,4 +21,3 @@ sub init {
     $self->setAttributes( %attrs );
 
 }
-
