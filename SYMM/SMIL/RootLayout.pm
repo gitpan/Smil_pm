@@ -13,11 +13,11 @@ sub init {
 
 sub getRootHeight {
     my $self = shift;
-    return $self->getAttribute( height );
+    return $self->getAttribute( "height" );
 }
 
 sub getRootWidth {
     my $self = shift;
-    return $self->getAttribute( width );
+    return $self->getAttribute( "width" );
 }
 

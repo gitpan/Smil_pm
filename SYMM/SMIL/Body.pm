@@ -21,6 +21,8 @@ my $counter = "counter";
 my $timeline = "timeline";
 my $href = 'href';
 my $anchors = 'anchors';
+my $switch = 'switch';
+my $medias = 'medias';
 my $par_bug = 1;
 
 sub init {
@@ -104,7 +106,8 @@ sub addMedia {
     my $self = shift;
     my %hash = @_;
 
-    $self->initTimeline( new SYMM::SMIL::Par ) unless( $self->{$timelineStack} && @{$self->{$timelineStack}} );
+    $self->initTimeline( new SYMM::SMIL::Par ) 
+	unless( $self->{$timelineStack} && @{$self->{$timelineStack}} );
     croak "Need to call startParallel or startSequence before adding media\n" 
 	if !$check_errors && !@{$self->{$timelineStack}};
      
@@ -112,9 +115,6 @@ sub addMedia {
     my $media = &getMediaObject( @_ );     
     $timeline_head->setTagContents( $self->{$counter}++ => $media );
 }
-
-my $switch = 'switch';
-my $medias = 'medias';
 
 sub addSwitchedMedia {
     my $self = shift;
@@ -125,7 +125,6 @@ sub addSwitchedMedia {
     my $media = $hash{ $medias };
     
     my $switch_obj = new SYMM::SMIL::Switch( $switch_attribute, $media );
-    
     my $timeline_head = ${$self->{$timelineStack}}[ -1 ];
     $timeline_head->setTagContents( $self->{$counter}++ => $switch_obj );
 }

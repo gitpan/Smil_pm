@@ -33,3 +33,7 @@ out the size of the files and create the region with those sizes.
 The makefile is now working.  This means that you can install simply
 by untarring and running "perl Makefile.PL"  
 
+0.44 
+
+Updated makefile so that it uses the standard ExtUtils::MakeMaker.
+

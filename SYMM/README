@@ -7,11 +7,11 @@ SMIL files using perl.  SMIL is a W3C langauge for multi-media authoring.
 
 HOW DO I INSTALL IT?
 
-Use the makefile.  Run this command
+Use the makefile in the SYMM directory.  Run this command
 
 perl Makefile.PL
 
-If you have the privileges, perl will place it in the right spot.
+If you have the correct privileges, perl will place it in the right spot.
 
 If you are not administrator, or have insufficient privileges to install
 into the perl lib path, then you will have to modify your %INC variable 
