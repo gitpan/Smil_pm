@@ -1,0 +1,35 @@
+0.2 
+
+First release
+
+0.22 
+
+More bug fixes
+
+0.3
+
+New cool feature: specify a src when defining a region and the 
+module will determine the media dimensions and use those dimensions
+as the dimensions of the region.
+
+$s->addRegion( "sm-src" => "http://www.server.com/img.gif" ... );
+
+This even works with hyperlinks, if LWP is installed.  You can also
+specify locally referenced files within the current filesystem.
+
+Currently, the only media type supported is GIF, but I plan to support
+JPG and of course all the RealMedia file types.  I imagine that 
+Flash/Shockwave won't be too hard since the file format is publically
+documented.
+
+0.31
+
+Added more datatypes to the addRegion( "sm-src" ) functionality. You
+can now specify a RealText or RealPix file and the region will snoop
+out the size of the files and create the region with those sizes.
+
+0.4
+
+The makefile is now working.  This means that you can install simply
+by untarring and running "perl Makefile.PL"  
+
