@@ -48,4 +48,6 @@ to add a comment.  The user is responsible for formatting.
 Installation information was updated.  Make sure to run make after you
 run the perl Makefile.pl command.
 
+0.63 
 
+Fixed a debugging error.  

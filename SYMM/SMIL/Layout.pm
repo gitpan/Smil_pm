@@ -75,8 +75,6 @@ sub process_for_size {
     my $content = shift;
     my( $height, $width );
 
-    warn "Type is $type\n";
-
     if( $type =~ /gif/i || $content =~ /^GIF/ ) {
 	my $string = $1 if $content =~ /GIF.{3}(.{4})/;
 	@stuff = unpack "SS", $string;
